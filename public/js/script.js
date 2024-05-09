@@ -18,60 +18,76 @@ const productos = [
     { id:16, nombre: "Combo Almohada + Muñeca", precio: 1700, descripcion: "Cantidad: x Unid.", imagen: "../public/img/productos/photo_2024-03-24_21-50-32.jpg" }
 ];
 
-//let carrito = [];
 let contenedorDetalles;
 
 document.addEventListener('DOMContentLoaded', function() {
     contenedorDetalles = document.getElementById('producto-details');
+    if (!contenedorDetalles) {
+        console.error('El contenedor de detalles del producto no existe');
+        return;
+    }
 
     function obtenerDetallesProducto() {
         const urlParams = new URLSearchParams(window.location.search);
-        const productoID = parseInt(urlParams.get('id'));
+        const productoID = parseInt(urlParams.get('id'), 10);
+        if (isNaN(productoID)) {
+            console.error('El ID del producto no es un número válido');
+            return null;
+        }
         return productos.find(producto => producto.id === productoID);
     }
 
     function mostrarDetallesProducto() {
         const producto = obtenerDetallesProducto();
-        if (producto) {
-            contenedorDetalles.innerHTML = `
-                <h3>${producto.nombre}</h3>
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <p>${producto.descripcion}</p>
-                <p>Precio unitario: $${producto.precio}</p>
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" value="1" min="1">
-                <p id="total">Total: $${producto.precio}</p>
-                <button id="btnAgregar" class="btn-agregar-carrito">Agregar al carrito</button>
-            `;
-
-            document.getElementById('cantidad').addEventListener('change', function() {
-                const total = this.value * producto.precio;
-                document.getElementById('total').textContent = `Total: $${total}`;
-            });
-
-            document.getElementById('btnAgregar').addEventListener('click', function() {
-                const cantidad = parseInt(document.getElementById('cantidad').value);
-                agregarAlCarrito(producto, cantidad);
-            });
-        } else {
+        if (!producto) {
             contenedorDetalles.innerHTML = '<p>Producto no encontrado.</p>';
+            return;
         }
+    
+        contenedorDetalles.innerHTML = `
+            <h3>${producto.nombre}</h3>
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <p>${producto.descripcion}</p>
+            <p>Precio unitario: $${producto.precio}</p>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" value="1" min="1">
+            <p id="total">Total: $${producto.precio}</p>
+            <button id="btnAgregar" class="btn-agregar-carrito">Agregar al carrito</button>
+            <button id="btnContinuarComprando" class="btn-continuar-comprando">Continuar Comprando</button>
+            <button id="btnIrFormulario" class="btn-ir-formulario">Ir al Formulario</button>
+        `;
+    
+        document.getElementById('cantidad').addEventListener('change', function() {
+            const total = this.value * producto.precio;
+            document.getElementById('total').textContent = `Total: $${total}`;
+        });
+    
+        document.getElementById('btnAgregar').addEventListener('click', function() {
+            const cantidad = parseInt(document.getElementById('cantidad').value, 10);
+            agregarAlCarrito({...producto}, cantidad);
+        });
+    
+        document.getElementById('btnContinuarComprando').addEventListener('click', function() {
+            window.location.href = 'productos.html'; // Asumiendo que 'productos.html' es la página de listado de productos
+        });
+    
+        document.getElementById('btnIrFormulario').addEventListener('click', function() {
+            window.location.href = 'formularioEnvio.html'; // Dirige al formulario de envío
+        });
     }
 
     mostrarDetallesProducto();
-
-    document.getElementById('btnCancelar').addEventListener('click', cancelarPedido);
-
 });
 
 function agregarAlCarrito(producto, cantidad) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    producto.cantidad = cantidad; // Agregar cantidad al producto
+    producto.cantidad = cantidad;
     carrito.push(producto);
     localStorage.setItem('carrito', JSON.stringify(carrito));
     alert(`Agregado al carrito: ${producto.nombre} (Cantidad: ${cantidad})`);
-    window.location.href = 'formularioEnvio.html';
 }
+
+//Estilo 
 
 const btnAgregar = document.createElement('button');
 btnAgregar.textContent = 'Agregar al carrito';
