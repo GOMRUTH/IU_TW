@@ -1,0 +1,83 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos específicos para la página de perfil */
+
+#avatar-preview {
+    margin-top: 10px;
+}
+
+.editing {
+    border: 1px solid #007bff;
+}
+
+#save-changes,
+#cancel-edit {
+    margin-top: 10px;
+}
+
+#save-changes {
+    background-color: #28a745;
+}
+
+#cancel-edit {
+    background-color: #dc3545;
+    margin-left: 10px;
+}
+
+/* Estilos específicos para la página de inicio de sesión */
+
+#login-form {
+    margin-top: 20px;
+}
+
+/* Estilos específicos para la página de registro */
+
+#register-form {
+    margin-top: 20px;
+}
