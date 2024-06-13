@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
     <link rel="stylesheet" href="../public/css/style.css">
-    
 </head>
 <body>
-
     <main>
         <img src="../public/img/logo/LRNFT200X200.png" alt="Logo de LibroRecomienda">
         <h1>LibroRecomienda</h1>
@@ -17,12 +15,75 @@
     <div class="container">
         <h2>Bienvenido a LibroRecomienda</h2>
         <p>Descubre libros interesantes y recibe recomendaciones personalizadas.</p>
-        <p>¿Ya tienes una cuenta? 
-            <p></p>
+        <!--<p>¿Ya tienes una cuenta? 
             <a href="login.html">Inicia sesión</a> 
             <a href="register.html">Regístrate</a>
-        </p>
-
+        </p>-->
+        <div class="contenidosLibros">
+            <!-- Aquí se mostrarán los libros -->
+        </div>
+        <button id="ver-mas-btn">Ver más libros</button>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const books = [
+                { id: 1, title: "Libro 1", genre: "fantasia", year: 2021, rating: 4 },
+                { id: 2, title: "Libro 2", genre: "ciencia-ficcion", year: 2020, rating: 5 },
+                { id: 3, title: "Libro 3", genre: "misterio", year: 2019, rating: 3 }
+            ];
+
+            displayBooks(books);
+
+            function displayBooks(books) {
+                const container = document.querySelector('.contenidosLibros');
+                container.innerHTML = '';
+                books.forEach(book => {
+                    const bookElement = document.createElement('div');
+                    bookElement.classList.add('book');
+                    bookElement.innerHTML = `
+                        <h3>${book.title}</h3>
+                        <p>Género: ${book.genre}</p>
+                        <p>Año: ${book.year}</p>
+                        <p>Puntuación: ${'★'.repeat(book.rating)}${'☆'.repeat(5 - book.rating)}</p>
+                        <button class="like-btn" data-id="${book.id}">Me gusta</button>
+                        <div class="rating">
+                            <span data-id="${book.id}" data-rating="1">★</span>
+                            <span data-id="${book.id}" data-rating="2">★</span>
+                            <span data-id="${book.id}" data-rating="3">★</span>
+                            <span data-id="${book.id}" data-rating="4">★</span>
+                            <span data-id="${book.id}" data-rating="5">★</span>
+                        </div>
+                    `;
+                    container.appendChild(bookElement);
+                });
+
+                // Add event listeners for like buttons and star ratings
+                document.querySelectorAll('.like-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const bookId = this.getAttribute('data-id');
+                        showLoginMessage();
+                    });
+                });
+
+                document.querySelectorAll('.rating span').forEach(star => {
+                    star.addEventListener('click', function() {
+                        const bookId = this.getAttribute('data-id');
+                        const rating = this.getAttribute('data-rating');
+                        showLoginMessage();
+                    });
+                });
+            }
+
+            function showLoginMessage() {
+                const confirmRedirect = confirm("Debes iniciar sesión o registrarte para realizar esta acción. ¿Deseas hacerlo ahora?");
+                if (confirmRedirect) {
+                    window.location.href = "login.html"; // Cambiar a la URL de la página de inicio de sesión
+                } else {
+                    // El usuario eligió cancelar, no redirigir
+                }
+            }
+        });
+    </script>
 </body>
 </html>
