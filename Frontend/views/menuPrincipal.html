@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
     <link rel="stylesheet" href="../public/css/style.css">
-    <script src="../public/js/scriptMenuPrincipal.js"></script>
+    <script src="../public/js/scriptMenuPrincipal.js" defer></script>
 </head>
 <body>
     <main>
@@ -21,143 +21,10 @@
             <button id="logout-btn">Cerrar Sesión</button>
         </div>
 
-        <!-- Filtros -->
-        <div class="filters">
-            <label for="genre">Género:</label>
-            <select id="genre">
-                <option value="todos">Todos</option>
-                <option value="fantasia">Fantasía</option>
-                <option value="ciencia-ficcion">Ciencia Ficción</option>
-                <option value="misterio">Misterio</option>
-                <!-- Agrega más opciones según sea necesario -->
-            </select>
-
-            <label for="year">Año:</label>
-            <input type="number" id="year" placeholder="Ej. 2021">
-
-            <label for="rating">Puntuación mínima:</label>
-            <select id="rating">
-                <option value="1">1 estrella</option>
-                <option value="2">2 estrellas</option>
-                <option value="3">3 estrellas</option>
-                <option value="4">4 estrellas</option>
-                <option value="5">5 estrellas</option>
-            </select>
-
-            <button id="filter-btn">Filtrar</button>
-        </div>
-
-        <div class="contenidosLibros">
+        <div class="contenedorLibros">
             <!-- Aquí se mostrarán los libros -->
         </div>
     </div>
 
-    <script>
-        document.getElementById('filter-btn').addEventListener('click', function() {
-            const genre = document.getElementById('genre').value;
-            const year = document.getElementById('year').value;
-            const rating = document.getElementById('rating').value;
-
-            console.log(`Filtrar libros por:
-                Género: ${genre},
-                Año: ${year},
-                Puntuación mínima: ${rating}`);
-            
-            const books = [
-                { id: 1, title: "Libro 1", genre: "fantasia", year: 2021, rating: 4 },
-                { id: 2, title: "Libro 2", genre: "ciencia-ficcion", year: 2020, rating: 5 },
-                { id: 3, title: "Libro 3", genre: "misterio", year: 2019, rating: 3 }
-            ];
-
-            const filteredBooks = books.filter(book => {
-                return (genre === "todos" || book.genre === genre) &&
-                    (!year || book.year === parseInt(year)) &&
-                    book.rating >= parseInt(rating);
-            });
-
-            displayBooks(filteredBooks);
-        });
-
-        function displayBooks(books) {
-            const container = document.querySelector('.contenidosLibros');
-            container.innerHTML = '';
-            books.forEach(book => {
-                const bookElement = document.createElement('div');
-                bookElement.classList.add('book');
-                bookElement.innerHTML = `
-                    <h3>${book.title}</h3>
-                    <p>Género: ${book.genre}</p>
-                    <p>Año: ${book.year}</p>
-                    <p>Puntuación: ${'★'.repeat(book.rating)}${'☆'.repeat(5 - book.rating)}</p>
-                    <button class="like-btn" data-id="${book.id}">Me gusta</button>
-                    <div class="rating">
-                        <span data-id="${book.id}" data-rating="1">★</span>
-                        <span data-id="${book.id}" data-rating="2">★</span>
-                        <span data-id="${book.id}" data-rating="3">★</span>
-                        <span data-id="${book.id}" data-rating="4">★</span>
-                        <span data-id="${book.id}" data-rating="5">★</span>
-                    </div>
-                `;
-                container.appendChild(bookElement);
-            });
-
-            // Add event listeners for like buttons and star ratings
-            document.querySelectorAll('.like-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const bookId = this.getAttribute('data-id');
-                    likeBook(bookId);
-                });
-            });
-
-            document.querySelectorAll('.rating span').forEach(star => {
-                star.addEventListener('click', function() {
-                    const bookId = this.getAttribute('data-id');
-                    const rating = this.getAttribute('data-rating');
-                    rateBook(bookId, rating);
-                });
-            });
-        }
-
-        function likeBook(bookId) {
-            console.log(`Me gusta el libro con ID: ${bookId}`);
-            // Aquí debes enviar una solicitud al backend para guardar la acción de "me gusta"
-            // Ejemplo de uso de fetch para enviar datos al backend
-            fetch('/likeBook', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ bookId: bookId })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                // Actualizar la interfaz si es necesario
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-
-        function rateBook(bookId, rating) {
-            console.log(`Calificar el libro con ID: ${bookId} con ${rating} estrellas`);
-            // Aquí debes enviar una solicitud al backend para guardar la calificación
-            fetch('/rateBook', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ bookId: bookId, rating: rating })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                // Actualizar la interfaz si es necesario
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
 </body>
 </html>

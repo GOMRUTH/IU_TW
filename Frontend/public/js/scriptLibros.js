@@ -211,76 +211,68 @@ const libros = [
     }
 ];
 
-document.addEventListener('DOMContentLoaded', function() {
-    var logoutBtn = document.getElementById('logout-btn');
-    
-    logoutBtn.addEventListener('click', function() {
-        localStorage.removeItem('loggedIn');
-        localStorage.removeItem('userName');
-        alert('Sesión cerrada');
-        window.location.href = 'login.html';
+// Función para mostrar los libros en el HTML
+function mostrarLibros() {
+    const contenedorLibros = document.querySelector('.contenedorLibros');
+    contenedorLibros.innerHTML = ''; // Limpiar el contenedor
+
+    libros.forEach(libro => {
+        const libroElemento = document.createElement('div');
+        libroElemento.classList.add('libro');
+
+        // Crear las estrellas de calificación
+        const estrellas = crearEstrellas(libro.average_rating);
+
+        libroElemento.innerHTML = `
+            <h3>${libro.title}</h3>
+            <p><strong>Autor:</strong> ${libro.authors}</p>
+            <p><strong>Año de Publicación:</strong> ${libro.original_publication_year}</p>
+            <p><strong>Calificación Promedio:</strong> ${libro.average_rating}</p>
+            <div class="estrellas">${estrellas}</div>
+            <img src="${libro.image_url}" alt="${libro.title}">
+            <button class="btn-recomendar" data-id="${libro.goodreads_book_id}">Ver más</button>
+        `;
+
+        contenedorLibros.appendChild(libroElemento);
     });
 
-    // Función para mostrar los libros en el HTML
-    function mostrarLibros() {
-        const contenedorLibros = document.querySelector('.contenedorLibros');
-        contenedorLibros.innerHTML = ''; // Limpiar el contenedor
-
-        libros.forEach(libro => {
-            const libroElemento = document.createElement('div');
-            libroElemento.classList.add('libro');
-
-            // Crear las estrellas de calificación
-            const estrellas = crearEstrellas(libro.average_rating);
-
-            libroElemento.innerHTML = `
-                <h3>${libro.title}</h3>
-                <p><strong>Autor:</strong> ${libro.authors}</p>
-                <p><strong>Año de Publicación:</strong> ${libro.original_publication_year}</p>
-                <p><strong>Calificación Promedio:</strong> ${libro.average_rating}</p>
-                <div class="estrellas">${estrellas}</div>
-                <img src="${libro.image_url}" alt="${libro.title}">
-                <button class="btn-recomendar" data-id="${libro.goodreads_book_id}">Ver más</button>
-            `;
-
-            contenedorLibros.appendChild(libroElemento);
+    document.querySelectorAll('.btn-recomendar').forEach(button => {
+        button.addEventListener('click', function() {
+            const bookId = this.getAttribute('data-id');
+            irAPagina(bookId);
         });
+    });
+}
 
-        // Agregar eventos a los botones "Ver más"
-        const botonesRecomendar = document.querySelectorAll('.btn-recomendar');
-        botonesRecomendar.forEach(boton => {
-            boton.addEventListener('click', function() {
-                const bookId = this.getAttribute('data-id');
-                irAPagina(bookId);
-            });
-        });
-    }
+// Función para crear las estrellas basadas en la calificación
+function crearEstrellas(calificacion) {
+    const maxEstrellas = 5;
+    let estrellasHTML = '';
 
-    // Función para crear las estrellas basadas en la calificación
-    function crearEstrellas(calificacion) {
-        const maxEstrellas = 5;
-        let estrellasHTML = '';
-
-        for (let i = 1; i <= maxEstrellas; i++) {
-            if (i <= calificacion) {
-                estrellasHTML += '<i class="fas fa-star"></i>';
-            } else if (i - calificacion < 1) {
-                estrellasHTML += '<i class="fas fa-star-half-alt"></i>';
-            } else {
-                estrellasHTML += '<i class="far fa-star"></i>';
-            }
+    for (let i = 1; i <= maxEstrellas; i++) {
+        if (i <= calificacion) {
+            estrellasHTML += '<i class="fas fa-star"></i>';
+        } else if (i - calificacion < 1) {
+            estrellasHTML += '<i class="fas fa-star-half-alt"></i>';
+        } else {
+            estrellasHTML += '<i class="far fa-star"></i>';
         }
-
-        return estrellasHTML;
     }
 
-    // Función para redirigir a la página del libro
-    function irAPagina(bookId) {
+    return estrellasHTML;
+}
+
+// Función para redirigir a la página del libro
+function irAPagina(bookId) {
+    const isLoggedIn = false; // Cambia esto según el estado real de autenticación del usuario
+    if (isLoggedIn) {
         const url = `https://www.goodreads.com/book/show/${bookId}`;
         window.location.href = url;
+    } else {
+        alert("Por favor, inicia sesión o regístrate para recomendar este libro.");
+        window.location.href = 'login.html'; // Cambia a la URL de tu página de login/registro
     }
+}
 
-    // Ejecutar la función al cargar la página
-    mostrarLibros();
-});
-
+// Ejecutar la función al cargar la página
+document.addEventListener('DOMContentLoaded', mostrarLibros);
