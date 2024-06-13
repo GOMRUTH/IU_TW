@@ -10,15 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
             newUser[key] = value;
         });
 
-        console.log('Nuevo usuario:', newUser);
-
-        var usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-        usuariosRegistrados.push(newUser);
-        localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
-
-        console.log('Usuarios registrados actualizados:', usuariosRegistrados);
-
-        alert('Registro exitoso. Ahora puedes iniciar sesión.');
-        window.location.href = 'login.html';
+        fetch('http://localhost:8080/api/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Nuevo usuario registrado:', data);
+            alert('Registro exitoso. Ahora puedes iniciar sesión.');
+            window.location.href = 'login.html';
+        })
+        .catch(error => console.error('Error registrando usuario:', error));
     });
 });
