@@ -6,15 +6,13 @@ import com.example.tp_final_interfaces.model.Libro;
 import com.example.tp_final_interfaces.service.ILibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @EnableScheduling
+@CrossOrigin
 @RestController
 @RequestMapping(path="/api/libros")
 public class LibroController {
