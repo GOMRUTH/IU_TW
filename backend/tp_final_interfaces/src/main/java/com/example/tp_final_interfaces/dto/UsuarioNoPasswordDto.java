@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @AllArgsConstructor
-public class UsuarioDto {
+public class UsuarioNoPasswordDto {
     private String nombreUsuario;
 
     private String apellidoUsuario;
@@ -14,6 +14,4 @@ public class UsuarioDto {
     private String username;
 
     private String email;
-
-    private String password;
 }
