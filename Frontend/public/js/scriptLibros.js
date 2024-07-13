@@ -1,4 +1,4 @@
-const libros = [
+/*const libros = [
     {
         book_id: 1,
         goodreads_book_id: 2767052,
@@ -275,4 +275,28 @@ function irAPagina(bookId) {
 }
 
 // Ejecutar la función al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarLibros);
+document.addEventListener('DOMContentLoaded', mostrarLibros);*/
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('http://localhost:8080/LibroController')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const bookList = document.getElementById('book-list');
+        data.forEach(book => {
+          const bookItem = document.createElement('div');
+          bookItem.innerHTML = `
+            <h3>${book.title}</h3>
+            <p>${book.author}</p>
+            <a href="${book.link}" target="_blank">View Book</a>
+          `;
+          bookList.appendChild(bookItem);
+        });
+      })
+      .catch(error => console.error('There was a problem with the fetch operation:', error));
+  });
+  
