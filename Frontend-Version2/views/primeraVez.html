@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/menuPrincipal.css">
+    <link rel="stylesheet" href="../public/css/primeraVez.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../public/js/Datos js/Libros.js" defer></script>
+    <script src="../public/js/Datos js/usuarios.js" defer></script>
+    <script src="../public/js/Datos js/predicciones.js" defer></script>
+    <script src="../public/js/Datos js/DtoLibros.js" defer></script>
+    <script src="../public/js/scriptMenuPrincipal.js" defer></script>
+    <script src="../public/js/scriptPrimeraVez.js" defer></script>
+    <script src="../public/js/Datos js/generos.js"></script>
+    
+</head>
+<body>
+    <main>
+        <img src="../public/img/logo/LRNFT200X200.png" alt="Logo de LibroRecomienda">
+        <h1>LibroRecomienda</h1>
+        <nav>
+            <button id="menu-toggle">☰</button>
+            <ul id="menu" class="hidden">
+                <li><a href="menuPrincipal.html">Home</a></li>
+                <li><a href="favoritos.html">Mis Favoritos</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><button id="logout-btn">Cerrar Sesión</button></li>
+            </ul>
+        </nav>
+    </main>
+
+    <div class="container">
+        <h2>Bienvenido a LibroRecomienda, <span id="user-name"></span></h2>
+        <p>¡Gracias por registrarte! Esta es tu primera visita.</p>
+
+        <div class="generos-container">
+            <h2>Explora por Género:</h2>
+
+            <div class="generos-list">
+                <!-- Aquí se generan dinámicamente los checkboxes según los géneros en generos.js -->
+            </div>
+    
+            <button id="guardar-generos-btn">Guardar Géneros</button>
+
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>Contáctanos en caso de necesitar ayuda: <a href="mailto:soporte@tudominio.com">soporte@tudominio.com</a></p>
+    </footer>
+
+</body>
+</html>

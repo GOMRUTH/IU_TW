@@ -1,0 +1,53 @@
+.generos-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.generos-list div {
+    flex: 1 1 calc(25% - 10px); /* Ajusta el valor de calc para cambiar el número de columnas */
+    min-width: 150px; /* Ancho mínimo para asegurar que no se colapsen demasiado las columnas */
+}
+
+.generos-list input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.generos-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#guardar-generos-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#guardar-generos-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries for larger screens */
+@media (min-width: 768px) {
+    .generos-container div {
+        flex: 1 1 30%;
+    }
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 767px) {
+    .generos-container div {
+        flex: 1 1 100%;
+    }
+
+    #guardar-generos-btn {
+        width: 100%;
+    }
+}

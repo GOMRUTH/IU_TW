@@ -1,0 +1,95 @@
+/* Estilo para el contenedor de recomendaciones */
+.contenedorRecomendaciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cada recomendación */
+.recomendacion {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: calc(33.333% - 40px); /* Tres recomendaciones por fila */
+    box-sizing: border-box;
+    transition: transform 0.2s;
+}
+
+.recomendacion:hover {
+    transform: scale(1.05);
+}
+
+.recomendacion img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.recomendacion h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.recomendacion p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.recomendacion p strong {
+    color: #333;
+}
+
+/* Estilo para las estrellas */
+.estrellas {
+    color: #FFD700; /* Color dorado para las estrellas */
+    margin-bottom: 10px;
+}
+
+.estrellas .fa-star,
+.estrellas .fa-star-half-alt,
+.estrellas .fa-star-o {
+    margin-right: 5px;
+}
+
+/* Estilo para el botón de recomendar */
+.btn-recomendar {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-recomendar:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recomendacion {
+        width: calc(50% - 30px); /* Dos recomendaciones por fila en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .recomendacion {
+        width: 100%; /* Una recomendación por fila en pantallas pequeñas */
+    }
+}

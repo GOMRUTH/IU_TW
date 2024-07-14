@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/menuPrincipal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../public/js/Datos js/Libros.js" defer></script>
+    <script src="../public/js/Datos js/usuarios.js" defer></script>
+    <script src="../public/js/Datos js/predicciones.js" defer></script>
+    <script src="../public/js/Datos js/DtoLibros.js" defer></script>
+    <script src="../public/js/scriptMenuPrincipal.js" defer></script>
+    
+</head>
+<body>
+    <main>
+        <img src="../public/img/logo/LRNFT200X200.png" alt="Logo de LibroRecomienda">
+        <h1>LibroRecomienda</h1>
+        <nav>
+            <button id="menu-toggle">☰</button>
+            <ul id="menu" class="hidden">
+                <li><a href="menuPrincipal.html">Home</a></li>
+                <li><a href="favoritos.html">Mis Favoritos</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><button id="logout-btn">Cerrar Sesión</button></li>
+            </ul>
+        </nav>
+    </main>
+
+    <div class="container">
+        <h2>Bienvenido a LibroRecomienda, <span id="user-name"></span></h2>
+        <p>Descubre libros interesantes y recibe recomendaciones personalizadas.</p>
+
+        <div class="containerFiltros">
+            <input type="text" id="search-input" placeholder="Buscar libros...">
+        </div>
+
+        <div class="botones-container">
+            <a href="recomendaciones.html"><button id="btn-recomendaciones">Lista de Recomendaciones</button></a>
+            <a href="favoritos.html"><button id="btn-favoritos">Mis Favoritos</button></a>
+            <a href="todoLibros.html"><button id="btn-todos">Todos los Libros</button></a>
+        </div>
+
+        <div id="lista-libros" class="contenedorLibros"></div>
+        
+    </div>
+
+</body>
+</html>

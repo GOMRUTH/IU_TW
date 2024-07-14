@@ -1,0 +1,110 @@
+.ratings {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ratings li {
+    margin-bottom: 10px;
+}
+
+.count {
+    display: inline-block;
+    width: 120px; /* Ancho del texto */
+}
+
+.progress-bar {
+    width: 200px; /* Ancho total de la barra de progreso */
+    height: 20px; /* Altura de la barra de progreso */
+    background-color: #f0f0f0; /* Color de fondo de la barra de progreso */
+    margin-top: 5px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #FFD700; /* Color de la barra de progreso */
+}
+
+/* Clases específicas para diferentes cantidades de calificaciones */
+.star-20 {
+    width: 20%;
+}
+
+.star-40 {
+    width: 40%;
+}
+
+.star-60 {
+    width: 60%;
+}
+
+.star-80 {
+    width: 80%;
+}
+
+.star-100 {
+    width: 100%;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+.btn-recomendar {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.iconos {
+    margin-top: 5px;
+}
+
+.iconos i {
+    font-size: 24px;
+    color: #666;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .progress-bar {
+        width: 150px; /* Ajuste de ancho para pantallas más pequeñas */
+    }
+
+    .count {
+        width: auto; /* Ancho automático para el texto en pantallas más pequeñas */
+    }
+
+    .btn-recomendar {
+        padding: 4px 8px; /* Ajuste de tamaño de botón */
+        font-size: 14px; /* Ajuste de tamaño de fuente */
+    }
+
+    .iconos i {
+        font-size: 20px; /* Ajuste de tamaño de ícono */
+    }
+}
+
+@media (max-width: 480px) {
+    .progress-bar {
+        width: 120px; /* Ajuste adicional de ancho para pantallas muy pequeñas */
+    }
+
+    .count {
+        font-size: 14px; /* Ajuste de tamaño de fuente para texto */
+    }
+
+    .btn-recomendar {
+        padding: 3px 6px; /* Ajuste adicional de tamaño de botón */
+        font-size: 12px; /* Ajuste adicional de tamaño de fuente */
+    }
+
+    .iconos i {
+        font-size: 18px; /* Ajuste adicional de tamaño de ícono */
+    }
+}

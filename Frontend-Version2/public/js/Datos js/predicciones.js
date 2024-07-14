@@ -1,0 +1,72 @@
+// Datos de predicciones por usuario
+const predicciones = {
+    61: [
+        { id_libro: 2, calificacion_estimada: 4.087314732691746 },
+        { id_libro: 21, calificacion_estimada: 4.12001509111842 },
+        { id_libro: 57, calificacion_estimada: 3.71666730750096 },
+        { id_libro: 115, calificacion_estimada: 3.847357020490964 },
+        { id_libro: 122, calificacion_estimada: 3.278496311064075 },
+        { id_libro: 109, calificacion_estimada: 3.891567570869463 },
+        { id_libro: 22, calificacion_estimada: 3.480723570418279 },
+        { id_libro: 378, calificacion_estimada: 3.8992056535441217 },
+        { id_libro: 574, calificacion_estimada: 3.6726937989380253 },
+        { id_libro: 94, calificacion_estimada: 3.892628510157654 },
+        { id_libro: 194, calificacion_estimada: 3.2383858471491775 },
+        { id_libro: 154, calificacion_estimada: 3.8240898765664575 },
+        { id_libro: 39, calificacion_estimada: 4.032362413311606 },
+        { id_libro: 110, calificacion_estimada: 4.160685529827389 },
+        { id_libro: 165, calificacion_estimada: 3.8967504352308264 }
+    ],
+    75: [
+        { id_libro: 33, calificacion_estimada: 3.562157907816253 },
+        { id_libro: 21, calificacion_estimada: 3.9829291260827366 },
+        { id_libro: 27, calificacion_estimada: 3.967732495436705 },
+        { id_libro: 43, calificacion_estimada: 3.742344372994837 },
+        { id_libro: 78, calificacion_estimada: 2.9738481620273953 },
+        { id_libro: 180, calificacion_estimada: 3.55971365799039 },
+        { id_libro: 184, calificacion_estimada: 3.9798134592333523 },
+        { id_libro: 158, calificacion_estimada: 3.722543242591278 },
+        { id_libro: 8, calificacion_estimada: 3.32190898743285 },
+        { id_libro: 119, calificacion_estimada: 3.6825480590085755 },
+        { id_libro: 32, calificacion_estimada: 3.5726268411275384 },
+        { id_libro: 92, calificacion_estimada: 3.5934826996723945 },
+        { id_libro: 23, calificacion_estimada: 3.779842611130019 },
+        { id_libro: 55, calificacion_estimada: 3.641082602804501 },
+        { id_libro: 10, calificacion_estimada: 3.8225836945586757 }
+    ],
+    89: [
+        { id_libro: 11, calificacion_estimada: 3.880206404701896 },
+        { id_libro: 21, calificacion_estimada: 3.999171836832833 },
+        { id_libro: 57, calificacion_estimada: 3.6061268864311917 },
+        { id_libro: 109, calificacion_estimada: 3.843672872679984 },
+        { id_libro: 22, calificacion_estimada: 3.372194898569264 },
+        { id_libro: 150, calificacion_estimada: 3.692223041861066 },
+        { id_libro: 63, calificacion_estimada: 3.421041327435725 },
+        { id_libro: 92, calificacion_estimada: 3.60848751704489 },
+        { id_libro: 23, calificacion_estimada: 3.8128494830778505 },
+        { id_libro: 55, calificacion_estimada: 3.758774584939718 },
+        { id_libro: 138, calificacion_estimada: 3.166296010157131 },
+        { id_libro: 130, calificacion_estimada: 3.4846527103402423 },
+        { id_libro: 101, calificacion_estimada: 3.8645772922642596 },
+        { id_libro: 9, calificacion_estimada: 2.9803756001908486 },
+        { id_libro: 170, calificacion_estimada: 3.022871759395668 }
+    ],
+    143: [
+        { id_libro: 33, calificacion_estimada: 3.7266755513737064 },
+        { id_libro: 2, calificacion_estimada: 4.111815835256502 },
+        { id_libro: 18, calificacion_estimada: 4.179420323340968 },
+        { id_libro: 57, calificacion_estimada: 3.660644268153293 },
+        { id_libro: 109, calificacion_estimada: 3.746621724997596 },
+        { id_libro: 150, calificacion_estimada: 3.903113219647302 },
+        { id_libro: 63, calificacion_estimada: 3.3520695696440046 },
+        { id_libro: 714, calificacion_estimada: 3.778618156381907 },
+        { id_libro: 38, calificacion_estimada: 3.576825706209998 },
+        { id_libro: 78, calificacion_estimada: 3.054071659457427 },
+        { id_libro: 180, calificacion_estimada: 3.6104542765679786 },
+        { id_libro: 184, calificacion_estimada: 4.101056605792705 },
+        { id_libro: 158, calificacion_estimada: 3.9070921109173393 },
+        { id_libro: 173, calificacion_estimada: 3.4519269448231373 },
+        { id_libro: 14, calificacion_estimada: 3.4667463525766444 }
+    ]
+};
+
