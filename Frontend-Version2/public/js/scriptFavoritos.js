@@ -78,6 +78,11 @@ function calcularPromedioGeneral(libro) {
     return (totalCalificaciones / totalPersonas).toFixed(1);
 }
 
+function irAPagina(libroId) {
+    const url = `https://www.goodreads.com/book/show/${libroId}`;
+    window.location.href = url;
+}
+
 function cerrarSesion() {
     console.log('Cerrar sesión');
     localStorage.removeItem('usuarioActual'); // Ejemplo, elimina el item de usuario actual
