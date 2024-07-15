@@ -85,6 +85,7 @@ function mostrarRecomendaciones(idUsuario) {
                         <h3>${libro.titulo}</h3>
                         <p>Autor: ${libro.autores}</p>
                         <p>Calificación estimada: ${prediccion.calificacion_estimada.toFixed(2)}</p>
+                        <div class="estrellas">${crearEstrellas(prediccion.calificacion_estimada)}</div>
                     </div>
                 `;
                 prediccionesContainer.innerHTML += libroHTML;
@@ -122,6 +123,23 @@ function filtrarRecomendaciones(idUsuario, query) {
     }).catch(error => {
         console.error("Error al obtener datos:", error);
     });
+}
+
+function crearEstrellas(calificacion) {
+    const maxEstrellas = 5;
+    let estrellasHTML = '';
+
+    for (let i = 1; i <= maxEstrellas; i++) {
+        if (i <= calificacion) {
+            estrellasHTML += '<i class="fas fa-star"></i>';
+        } else if (i - calificacion < 1) {
+            estrellasHTML += '<i class="fas fa-star-half-alt"></i>';
+        } else {
+            estrellasHTML += '<i class="far fa-star"></i>';
+        }
+    }
+
+    return estrellasHTML;
 }
 
 function cerrarSesion() {
